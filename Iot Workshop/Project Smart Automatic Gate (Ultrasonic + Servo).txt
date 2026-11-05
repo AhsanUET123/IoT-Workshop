@@ -1,0 +1,95 @@
+#include <Servo.h>
+
+Servo gateServo;
+
+const int trigPin = 7;
+const int echoPin = 6;
+const int servoPin = 9;
+
+int distance;
+long duration;
+
+bool gateOpen = false;
+
+unsigned long lastDetectionTime = 0;
+
+const int openAngle = 90;
+const int closeAngle = 0;
+const int detectionDistance = 15;
+
+void setup() {
+
+  Serial.begin(9600);
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
+  gateServo.attach(servoPin);
+
+  gateServo.write(closeAngle);
+
+  Serial.println("Smart Automatic Gate Ready");
+
+}
+
+void loop() {
+
+  // Ultrasonic measurement
+
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+
+  digitalWrite(trigPin, LOW);
+
+  duration = pulseIn(echoPin, HIGH, 30000);
+
+  if (duration == 0) {
+    distance = 999;
+  }
+  else {
+    distance = duration * 0.0343 / 2;
+  }
+
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  // Object detection
+
+  if (distance > 0 && distance <= detectionDistance) {
+
+    lastDetectionTime = millis();
+
+    if (!gateOpen) {
+
+      gateServo.write(openAngle);
+      gateOpen = true;
+
+      Serial.println("GATE OPEN");
+
+    }
+
+  }
+
+  // Close after 3 seconds without detection
+
+  if (gateOpen && millis() - lastDetectionTime >= 3000) {
+
+    gateServo.write(closeAngle);
+    gateOpen = false;
+
+    Serial.println("GATE CLOSED");
+
+  }
+
+  delay(100);
+
+}
+
+
+
+
+

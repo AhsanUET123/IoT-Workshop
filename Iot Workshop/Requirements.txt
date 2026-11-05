@@ -1,0 +1,103 @@
+
+Arduino & ESP32 Hands-on Workshop ki preparation ke liye tamam participants se request hai ke apne laptops par Arduino IDE install aur configure kar lein.
+
+Hum workshop mein different practical projects perform karenge, isliye please neeche diye gaye instructions follow karein.
+
+*1. SOFTWARE REQUIREMENTS*
+
+Please install:
+
+• Arduino IDE 2.x
+• USB data cable for Arduino UNO and ESP32
+• Required USB drivers, if your board's COM port is not detected.
+
+Official Arduino IDE download:
+https://www.arduino.cc/en/software
+
+*2. ARDUINO IDE LIBRARIES*
+
+Arduino IDE open karein:
+
+Sketch → Include Library → Manage Libraries
+
+Search and install the following libraries:
+
+1. *Servo* – For servo motor and automatic gate projects.
+2. *DHT sensor library* by Adafruit – For DHT11 temperature and humidity sensor.
+3. *Adafruit Unified Sensor* – Dependency for DHT sensor library.
+4. *ThingSpeak* – For sending sensor data to ThingSpeak cloud.
+5. *Blynk* – For ESP32 IoT projects using Blynk platform.
+
+*Important:* Har project ke liye additional library required nahi hoti. Basic LED Blink, PWM, FC-28 Soil Moisture, IR Sensor and Buzzer projects Arduino's built-in functions se perform ho sakte hain.
+
+*3. PROJECTS WE WILL PERFORM*
+
+*Arduino UNO Projects:*
+
+1. LED Blinking – Digital Output.
+2. LED Brightness Control – PWM.
+3. Smart Automatic Gate – HC-SR04 Ultrasonic Sensor + SG90 Servo Motor.
+4. Automatic Plant Water Monitoring System – FC-28 Soil Moisture Sensor + Green and Red LEDs.
+5. IR Obstacle Detection Alarm – IR Sensor + Buzzer.
+
+*ESP32 Projects:*
+
+1. LED Blinking using GPIO.
+2. Digital and Analog Sensor Interfacing.
+3. Wi-Fi Connectivity and Network Scanning.
+4. DHT11 Temperature and Humidity Monitoring.
+5. IoT Sensor Monitoring using ThingSpeak.
+6. IoT Connectivity using Blynk.
+
+*4. ESP32 BOARD SETUP*
+
+To use ESP32 with Arduino IDE, follow these steps:
+
+*Step 1:* Open Arduino IDE.
+
+*Step 2:* Go to File → Preferences.
+
+*Step 3:* In Additional Boards Manager URLs, add this link:
+
+https://espressif.github.io/arduino-esp32/package_esp32_index.json
+
+*Step 4:* Go to Tools → Board → Boards Manager.
+
+*Step 5:* Search for "ESP32".
+
+*Step 6:* Install "esp32 by Espressif Systems".
+
+*Step 7:* Restart Arduino IDE.
+
+*Step 8:* Connect ESP32 to your laptop using a USB data cable.
+
+*Step 9:* Select:
+Tools → Board → esp32 → ESP32 Dev Module.
+
+*Step 10:* Select your ESP32 COM port from Tools → Port.
+
+Your ESP32 is now ready to use with Arduino IDE.
+
+*5. IMPORTANT INSTRUCTIONS*
+
+• Make sure Arduino IDE is installed before attending the workshop.
+• Install the libraries mentioned above.
+• Keep your Arduino UNO and ESP32 boards ready.
+• Bring your USB data cables.
+• Bring your sensors, LEDs, resistors, jumper wires and breadboard, if available.
+• Do not connect 5V directly to ESP32 GPIO pins. ESP32 GPIO operates at 3.3V logic.
+• For servo motors, use an appropriate stable power supply and common GND.
+
+*6. OFFICIAL RESOURCES*
+
+Arduino IDE:
+https://www.arduino.cc/en/software
+
+ESP32 Setup Guide:
+https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html
+
+Arduino Library Installation:
+https://support.arduino.cc/hc/en-us/articles/5145457742236-Install-libraries-in-the-Arduino-IDE
+
+Please complete the software installation and ESP32 setup before the workshop so that we can focus more on practical implementation rather than spending time on installations.
+
